@@ -2,6 +2,20 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
+<?php
+
+require_once "funciones/conexion.php";
+require_once './ems/administrador/clases/clsConfigweb.php';
+
+$objConfig   = new clsConfigweb();
+
+$configData =$objConfig->ListarConfigWeb();
+
+while($rows = $configData->fetch_assoc()){
+    $correo=$rows["correo_eti"];
+    $telefono=$rows["telefono_eti"];
+}
+?>
 
 <!doctype html>
 
@@ -145,9 +159,9 @@
 
             <div class="contact-info d-flex align-items-center">
 
-                <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:contacto@midominio.com">contacto@midominio.com</a></i>
+                <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:<?=$correo?>"><?=$correo?></a></i>
 
-                <i class="bi bi-phone d-flex align-items-center ms-4"><span>232-3234</span></i>
+                <i class="bi bi-phone d-flex align-items-center ms-4"><span><?=$telefono?></span></i>
 
             </div>
 

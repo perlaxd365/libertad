@@ -5,7 +5,6 @@ require_once 'side/header.php';
 require_once "funciones/conexion.php";
 require_once "ems/logistica/clases/clsProducto.php";
 require_once 'ems/administrador/clases/clsBiblioteca.php';
-require_once 'core/configGeneral.php';
 
 $ItemsPag        = 9;
 $action 	 = isset($_GET['action'])   ? $_GET['action'] 	: null;		
@@ -162,6 +161,6 @@ $finLoop = $iniLoop + 4;
 </nav>
 </section>
 <?php
-require_once 'side/footer.html';
+require_once 'side/footer.php';
 
 ?>

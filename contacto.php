@@ -143,6 +143,6 @@ require_once 'side/header.php';
 
 <?php
 
-require_once 'side/footer.html';
+require_once 'side/footer.php';
 
 ?>
