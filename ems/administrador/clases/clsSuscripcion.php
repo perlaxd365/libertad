@@ -43,6 +43,19 @@ class clsSuscripcion {
 
 
     }
+    function buscarSuscripcion($email) {
+
+
+
+        $sql = "CALL SP_BUSCAR_EMA_SUS('".$email."')";
+
+        $rs=$this->cCnn->Sql($sql);
+
+        return $rs;					
+
+
+
+    }
 
 
 

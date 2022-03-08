@@ -10,6 +10,7 @@
 
         var $gBaseDatos = "corsch_comprobantes";
 
+        const SERVERURL="http://corschsystems.com/libertad/";
     }
 
 ?>

@@ -294,8 +294,8 @@ while($rows = $configData->fetch_assoc()){
                         <li class="nav-item"><a class="-link scrollto" href="index.php">Inicio</a></li>
                         <li class="nav-item"><a class="nav-link scrollto" href="nosotros.php">Nosotros</a></li>
                         <li class="nav-item"><a class="nav-link scrollto" href="contacto.php">Contáctenos</a></li>
-                        <li class="nav-item"><a class="nav-link scrollto" href="https://www.corschsystems.com/LibertadAdmin/">Administración</a></li>
-                        <li><a href="#" onclick="javascript:document.getElementById(`asunto`).submit();
+                        <li class="nav-item"><a class="nav-link scrollto" target="_blank" href="https://www.corschsystems.com/LibertadAdmin/">Administración</a></li>
+                        <li class="nav-item"><a class="nav-link scrollto" target="_blank" href="#" onclick="javascript:document.getElementById(`asunto`).submit();
                             return true;">Consultar CP</a></li>
                         <li class="nav-item">
                             <form method="post" action="https://www.corschsystems.com/LibertadAdmin/" id="asunto">
