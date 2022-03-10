@@ -166,7 +166,7 @@ switch ($_GET["page"]) {
 
                             <div class="col-lg-4">
 
-                                <div class="portfolio-info">
+                                <div class="portfolio-info"  style="border-radius: 20px;">
 
                                     <h3 class="text-center"><?= $row["prod_descripcion"] ?></h3>
 
@@ -214,7 +214,11 @@ switch ($_GET["page"]) {
 
                                     </p>
 
-                                    <button class="w-100 btn btn-lg btn-primary" type="submit" name="cmdAgregar" id="cmdAgregar">Añadir al carrito</button>
+                                  
+			<a href="javascript:history.back()" class="w-100 btn btn-lg btn-secondary">Volver</a>
+            <br>
+            <br>
+		  <button class="w-100 btn btn-lg btn-primary" type="submit" name="cmdAgregar" id="cmdAgregar">Añadir al carrito</button>
 
 
 

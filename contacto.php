@@ -1,10 +1,67 @@
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
 <?php
+
+use PHPMailer\PHPMailer\PHPMailer;
+
+require_once "conexion/phpmailer/PHPMailer.php";
+require_once "conexion/phpmailer/Exception.php";
+require_once "conexion/phpmailer/SMTP.php";
+
 
 require_once "ems/administrador/clases/clsCarta.php";
 
 require_once "funciones/session.php";
 
 require_once 'side/header.php';
+
+
+if (isset($_POST["nombre"]) && $_POST["nombre"] != '' && 
+          $_POST["correo"] != '' && $_POST["correo"] != '' && 
+          $_POST["asunto"] != '' && $_POST["asunto"] != '' && 
+          $_POST["mensaje"] != '' && $_POST["mensaje"] != ''  ) {
+
+
+
+    try {
+      $phpMailer = new PHPMailer();
+      $phpMailer->setFrom($_POST["correo"]); # Correo y nombre del remitente
+  
+      $phpMailer->Subject =$_POST["asunto"]; # Asunto
+      $phpMailer->Body =$_POST["mensaje"];  # Cuerpo en texto plano
+  
+      // Aquí la magia:
+  
+  
+      $phpMailer->addAddress("perlaxd365@gmail.com");
+      
+
+      if (!$phpMailer->send()) {
+        echo "Error enviando correo: " . $phpMailer->ErrorInfo;
+      }else{
+        echo '<script>swal({
+          title: "Mensaje Enviado",
+          text: "Gracias por contactarnos, te daremos una respuesta. Gracias",
+          icon: "success",
+          button: "Aceptar"
+        });
+        </script>';
+      }
+      # Opcionalmente podrías eliminar el archivo después de enviarlo, si quieres
+      // if (file_exists($nombreDelDocumento)) {
+      // unlink($nombreDelDocumento);
+      // }
+    } catch (Exception $e) {
+      echo "Excepción: " . $e->getMessage();
+    }
+  }
+  
+
+
+
 
 ?>
 
@@ -83,19 +140,19 @@ require_once 'side/header.php';
 
           <div class="col-lg-6">
 
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+            <form action="" method="post" role="form" class="php-email-form">
 
               <div class="row">
 
                 <div class="col form-group">
 
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Nombres" required>
+                  <input type="text" name="nombre" class="form-control" id="name" placeholder="Nombres" required>
 
                 </div>
 
                 <div class="col form-group">
 
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Correo" required>
+                  <input type="email" class="form-control" name="correo" id="correo" placeholder="Correo" required>
 
                 </div>
 
@@ -103,25 +160,16 @@ require_once 'side/header.php';
 
               <div class="form-group">
 
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Asunto" required>
+                <input type="text" class="form-control" name="asunto" id="subject" placeholder="Asunto" required>
 
               </div>
 
               <div class="form-group">
 
-                <textarea class="form-control" name="message" rows="5" placeholder="Mensaje" required></textarea>
+                <textarea class="form-control" name="mensaje" rows="5" placeholder="Mensaje" required></textarea>
 
               </div>
 
-              <div class="my-3">
-
-                <div class="loading">Cargando</div>
-
-                <div class="error-message"></div>
-
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-
-              </div>
 
               <div class="text-center"><button type="submit">Enviar</button></div>
 
@@ -140,9 +188,3 @@ require_once 'side/header.php';
     </div>
 
 </section>
-
-<?php
-
-require_once 'side/footer.php';
-
-?>

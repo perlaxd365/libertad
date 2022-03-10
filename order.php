@@ -270,7 +270,7 @@ switch($_GET["page"])
 
                 <div class="col-lg-4">
 
-                    <div class="portfolio-info">
+                    <div class="portfolio-info"  style="border-radius: 20px;">
 
                         <h3 class="text-center">Resumen de pedido</h3>
 
