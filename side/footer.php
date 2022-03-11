@@ -23,6 +23,10 @@ while ($rows = $configData->fetch_assoc()) {
   $telefono = $rows["telefono_eti"];
   $facebook = $rows["url_fb_eti"];
   $copy = $rows["copy_eti"];
+  $direccion = $rows["direccion_eti"];
+  $ciudad = $rows["ciudad_eti"];
+  $distrito = $rows["distrito_eti"];
+  $pais= $rows["pais_eti"];
 }
 
 if (isset($_POST["email"]) && $_POST["email"] != '') {
@@ -495,11 +499,11 @@ if (isset($_POST["email"]) && $_POST["email"] != '') {
 
           <p>
 
-            Av. 28 de Julio 600 <br>
+          <?=utf8_encode($direccion) ?> <br>
 
-            Lima, Huacho<br>
+          <?= utf8_encode($ciudad) ?>, <?= utf8_encode($distrito) ?><br>
 
-            Perú <br><br>
+            <?= utf8_encode($pais) ?> <br><br>
 
             <strong>Delivery</strong> <?= $telefono ?><br>
 

@@ -19,6 +19,22 @@ require_once "funciones/session.php";
 require_once 'side/header.php';
 
 
+
+require_once "funciones/conexion.php";
+require_once './ems/administrador/clases/clsConfigweb.php';
+
+$objConfig   = new clsConfigweb();
+$configData = $objConfig->ListarConfigWeb();
+while ($rows = $configData->fetch_assoc()) {
+  $correo = $rows["correo_eti"];
+  $telefono = $rows["telefono_eti"];
+  $direccion = $rows["direccion_eti"];
+  $ciudad = $rows["ciudad_eti"];
+  $distrito = $rows["distrito_eti"];
+  $pais= $rows["pais_eti"];
+}
+
+
 if (isset($_POST["nombre"]) && $_POST["nombre"] != '' && 
           $_POST["correo"] != '' && $_POST["correo"] != '' && 
           $_POST["asunto"] != '' && $_POST["asunto"] != '' && 
@@ -36,7 +52,7 @@ if (isset($_POST["nombre"]) && $_POST["nombre"] != '' &&
       // Aquí la magia:
   
   
-      $phpMailer->addAddress("perlaxd365@gmail.com");
+      $phpMailer->addAddress("juanalfredo1978@gmail.com");
       
 
       if (!$phpMailer->send()) {
@@ -88,7 +104,7 @@ if (isset($_POST["nombre"]) && $_POST["nombre"] != '' &&
               <h3>Dirección</h3>
 
               <div style="margin-top: 12px; margin-left: 40px;">
-              <p>Av. 28 de Julio 600, Huacho, Lima</p>
+              <p><?= utf8_encode($direccion) ?>, <?= utf8_encode($distrito) ?>, <?= utf8_encode($ciudad) ?>, <?= utf8_encode($pais) ?></p>
             </div>
             </div>
 
@@ -103,7 +119,7 @@ if (isset($_POST["nombre"]) && $_POST["nombre"] != '' &&
               <h3>Correo</h3>
 
               <div style="margin-top: 12px; margin-left: 40px;">
-              <p>contacto@midominio.com</p>
+              <p><?= $correo ?></p>
               </div>
             </div>
 
@@ -118,7 +134,7 @@ if (isset($_POST["nombre"]) && $_POST["nombre"] != '' &&
               <h3>Delivery</h3>
 
               <div style="margin-top: 12px; margin-left: 40px;">
-              <p>+51 963 533 194</p>
+              <p><?= $telefono ?></p>
               </div>
             </div>
 

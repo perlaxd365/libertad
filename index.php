@@ -49,7 +49,7 @@ $Num_RowsBib = $rsBib->num_rows;
                             <?php
                             if ($row_["BIB_BOTON"] !== "-" and $row_["BIB_BOTON"] !== "") {
                             ?>
-                                <p><a class="btn btn-outline-secondary" href="<?= $row_["BIB_LINK"] ?>" role="button"><?= $row_["BIB_BOTON"] ?></a></p>
+                                <p><a class="btn btn-outline-secondary" target="_blank" href="<?= $row_["BIB_LINK"] ?>" role="button"><?= $row_["BIB_BOTON"] ?></a></p>
                             <?php
                             }
                             ?>
