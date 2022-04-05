@@ -295,13 +295,8 @@ while($rows = $configData->fetch_assoc()){
                         <li class="nav-item"><a class="nav-link scrollto" href="nosotros.php">Nosotros</a></li>
                         <li class="nav-item"><a class="nav-link scrollto" href="contacto.php">Contáctenos</a></li>
                         <li class="nav-item"><a class="nav-link scrollto" target="_blank" href="https://www.corschsystems.com/LibertadAdmin/">Administración</a></li>
-                        <li class="nav-item"><a class="nav-link scrollto" target="_blank" href="#" onclick="javascript:document.getElementById(`asunto`).submit();
-                            return true;">Consultar CP</a></li>
-                        <li class="nav-item">
-                            <form method="post" action="https://www.corschsystems.com/LibertadAdmin/" id="asunto">
-                                <input type="hidden" name="consultarCPE" value="consultarCPE">
-                            </form>
-                        </li>
+                        <li class="nav-item"><a class="nav-link scrollto" target="_blank" href="https://www.corschsystems.com/LibertadAdmin?consultarCPE=1">Consultar CP</a></li>
+                        
                         <?php
 
                         if (!isset($_SESSION['sUser'])) {
